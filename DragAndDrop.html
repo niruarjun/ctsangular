@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #div1{
+        width: 400px;
+        height: 300px;
+        border: rebeccapurple solid 2px;
+
+    }
+</style>
+<body>
+    <div id="div1" ondrop="onDrop(event)" ondragover="allowDefault(event)"></div>
+    <div id="div2" ondrop="onDrag(event)" ondragover="allowDefault(event)"></div>
+    <img id="img1" draggable="true"  alt="" ondragstart="onDrag(event)" src="image.png" width="100"/>
+    <img id="img2" draggable="true"  ondragstart="onDrag(event)" src="image.png" width="100"/>
+    <script>
+        function allowDefault(event){
+            event.preventDefault();
+
+        }
+        function onDrag(event){
+            event.dataTransfer.setData("data",event.target.id);
+           
+        }
+        function onDrop(event){
+            var data=event.dataTransfer.getData("data");
+            event.target.appendChild(document.getElementById(data))
+            
+        }
+    </script>
+</body>
+</html>

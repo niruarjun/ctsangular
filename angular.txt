@@ -1,0 +1,4 @@
+ionic is used for mon=biles to build hybrid mobile applications
+npm install or i bootstrap -save =to install 
+ng new projectnmae to create new project
+ng  g  c test(component name) to create componenet in a project 
