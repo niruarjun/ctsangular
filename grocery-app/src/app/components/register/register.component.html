@@ -1,0 +1,136 @@
+<div
+  style="background-image: url(https://previews.123rf.com/images/kurhan/kurhan1609/kurhan160900049/62711306-organic-vegetables-and-fruits-dieting-and-grocery-background-.jpg);  background-size: contain; "
+>
+  <div
+    class="container  "
+    style="margin:100px 0px 0px 400px; width: 600px;background-color: darkseagreen; border-radius: 25px;"
+  >
+    <!--style="margin:100px 0px 0px 400px; width: 600px;background-color: darkseagreen; border-radius: 25px;"
+  > top,right,bottom,left-->
+
+    <div
+      class="text-center"
+      style="background-color: lightblue; border-radius: 40px; "
+    >
+      <h1>Registration</h1>
+    </div>
+
+    
+
+    <form #userForm2="ngForm" (ngSubmit)="onSubmit()">
+      <!--{{ userForm.value | json }}-->
+      
+
+      <!--{{ userModel | json }}-->
+      <div class="form-group">
+        <label for="">USER_NAME</label>
+        <!--<input ngModel name="username" type="text" class="form-control" />to show data in json format using interpolation in above the form
+      <input [ngModel]=userModel.username1 name="username" type="text" class="form-control" />One way data binding  share data between component and template(html) or vice versa if u change data it dont change
+      
+      <input [(ngModel)]=userModel.username1 name="username" type="text" class="form-control"/> two way binding   component and template(html) or vice versa  if change the data it will change both at atime
+      <input #userName [(ngModel)]=userModel.username1 name="username" type="text" class="form-control" required/>
+      {{userName.className}}
+    </div>-->
+
+        <input
+          #userName2="ngModel"
+          [(ngModel)]="userModel.username1"
+          name="username"
+          [class.is-invalid]="userName2.invalid && userName2.touched"
+          [class.is-valid]="userName2.valid && userName2.touched"
+          type="text"
+          class="form-control"
+          required
+        />
+        <small
+          class="text-danger"
+          [class.d-none]="userName2.valid || userName2.untouched"
+        >
+          * This field is required
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="">Email</label>
+        <input
+          [(ngModel)]="userModel.email1"
+          name="email"
+          type="email"
+          id=""
+          class="form-control"
+        />
+      </div>
+      <div class="formgroup">
+        <label for="">Phone</label>
+        <input
+          #phone2="ngModel"
+          [(ngModel)]="userModel.phone1"
+          name="phone"
+          type="tel"
+          id=""
+          class="form-control"
+          [class.is-invalid]="phone2.invalid && phone2.touched"
+          required
+          pattern="^\d{10}$"
+        />
+        <!--<small
+        class="text-danger"
+        [class.d-none]="phone2.valid || phone2.untouched">
+        * This field is required
+      </small>-->
+      <div *ngIf="phone2.errors && phone2.invalid && phone2.touched">
+        <small class="text-danger" *ngIf="phone2.errors.required">* This field is required</small>
+        <small  class="text-danger" *ngIf="phone2.errors.pattern">*Invalid Phone number min 10 numbers</small>
+      </div>
+      </div>
+      <div class="formgroup">
+        <label for="">Interest</label>
+        <select
+          [(ngModel)]="userModel.interests1"
+          name=" interests"
+          id=""
+          class="form-control"
+        >
+          <option>--Please Select--</option>
+          <option *ngFor="let interest of interests">{{ interest }}</option>
+        </select>
+      </div>
+      Gender:
+      <div class="form-group">
+        <div class="form-check"></div>
+        <input
+          [(ngModel)]="userModel.gender1"
+          name="gender"
+          value="male"
+          class="form-check-label"
+          name="gender"
+          type="radio"
+        />
+        <label class="form-check-label"> Male</label>
+        <input
+          [(ngModel)]="userModel.gender1"
+          name="gender"
+          value="female"
+          class="form-check-label"
+          name="gender"
+          type="radio"
+        />
+        <label class="form-check-label"> FeMale</label>
+      </div>
+
+      <div class="form-group">
+        <input
+          [(ngModel)]="userModel.subscribe1"
+          name="subscribe"
+          value="subscribed"
+          class="form-check-label"
+          type="checkbox"
+        />
+        <label class="form-check-label">Subscribe</label>
+      </div>
+      <div class="form-group">
+        <button type="submit" [disabled]="!userForm2.valid" value="Register" class="btn btn-primary">Register</button>
+      </div>
+    </form>
+  </div>
+</div>

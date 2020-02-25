@@ -1,0 +1,19 @@
+<app-header></app-header>
+<div class="container">
+    <h3 class="text-center">All Categories</h3>
+    <br>
+ 
+  <div class="row">
+  <div class="card" style="width:16rem " *ngFor="let category of categories" >
+  <div (click)="onSelectedCategory(category)">
+    
+   <img src="{{_image_url+category.catImage}}" class="card-img-top" alt="...">
+
+  <div class="card-body">
+      <h3 class="card-text">{{category.catName}}</h3>
+      
+  </div>
+  </div>
+  </div>
+  </div>
+</div>
